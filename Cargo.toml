@@ -1,0 +1,36 @@
+[package]
+name = "ar_desktop"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+# remove dynamic_linking when compiling for release
+bevy = { version = "0.13.0", features = ["dynamic_linking"] }
+
+hidapi = { version = "2.6.1" }
+tinyjson = { version = "2.5.1" }
+bytemuck = { version = "1.13.1" }
+byteorder = "1.4"
+async-hid = "0.1.0"
+async-io = { version = "1"}
+bevy_framepace = "0.15.0"
+
+nalgebra = { version = "0.32.3", default-features=false, features = ["std"]}
+dcmimu = "0.2.2"
+
+[dev-dependencies]
+clap = { version = "4.3", features = ["derive"] }
+
+[workspace]
+resolver = "2" # Important! wgpu/Bevy needs this!
+
+# Enable optimization in debug mode
+[profile.dev]
+opt-level = 3
+
+# Enable high optimizations for dependencies (incl. Bevy), but not for our code:
+[profile.dev.package."*"]
+opt-level = 3
+
