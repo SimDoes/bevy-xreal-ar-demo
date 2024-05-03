@@ -37,7 +37,7 @@ Running as higher priority (`sudo nice -n -10 cargo run`) might reduce input lag
 
 Might want to consider using `async-hid` instead of `hidapi` for the driver as a way to fix the jitter, although the loop is already running at 1000 Hz so I'm not too sure if that would help.
 
-Experiment with different Hz for fixed squedule of updating the camera. Rendering PreUpdate (before each frame) seems to create more jittering than using a fixed schedule, but results may vary based on your framerate.
+Experiment with different Hz for fixed schedule of updating the camera. Rendering PreUpdate (before each frame) seems to create more jittering than using a fixed schedule, but results may vary based on your framerate.
 
 ## Useful libraries
 
